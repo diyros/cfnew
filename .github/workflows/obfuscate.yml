@@ -29,7 +29,7 @@ jobs:
             const path = require('path');
             
             const sourceFileName = '明文源吗';
-            const outputFileName = _worker';
+            const outputFileName = '_worker';
             const sourceFilePath = path.join(process.cwd(), sourceFileName);
 
             if (!fs.existsSync(sourceFilePath)) {
