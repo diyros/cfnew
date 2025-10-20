@@ -3,8 +3,6 @@
 <img width="1708" height="884" alt="image" src="https://github.com/user-attachments/assets/ca35ae39-6971-4291-b182-28cb292c0353" />
 
 
-想加群的自己点击添加吧 tg交流群 https://t.me/+ft-zI76oovgwNmRh 
-
 ###  Snippets
 
 <img width="1128" height="801" alt="image" src="https://github.com/user-attachments/assets/ae108dd2-c543-4a63-b448-d56d4d520e1d" />
