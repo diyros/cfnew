@@ -1367,10 +1367,10 @@ async function handleSubscriptionPage(request, user = null) {
     <div class="matrix-bg"></div>
     <div class="matrix-rain"></div>
     <div class="matrix-code-rain" id="matrixCodeRain"></div>
-    <div class="matrix-text">代理订阅中心 v1.1</div>
+    <div class="matrix-text">订阅中心 v1.1</div>
     <div class="container">
         <div class="header">
-            <h1 class="title">代理订阅中心</h1>
+            <h1 class="title">订阅中心</h1>
             <p class="subtitle">多客户端支持 • 智能优选 • 一键生成</p>
         </div>
         <div class="card">
