@@ -2,22 +2,11 @@
 
 <img width="1708" height="884" alt="image" src="https://github.com/user-attachments/assets/ca35ae39-6971-4291-b182-28cb292c0353" />
 
-
-想加群的自己点击添加吧 tg交流群 https://t.me/+ft-zI76oovgwNmRh 
-
 ###  Snippets
 
 <img width="1128" height="801" alt="image" src="https://github.com/user-attachments/assets/ae108dd2-c543-4a63-b448-d56d4d520e1d" />
 
 #### 加入多客户端支持 域名/你的uuid即可看见
-
-###  配套工具
-
-| 类型 | 描述 | 链接 |
-| :--- | :--- | :--- |
-|  **文字教程** | 详细的部署与使用说明博客文章 | [https://joeyblog.net/yuanchuang/1146.html](https://joeyblog.net/yuanchuang/1146.html) |
-|  **Workers视频教程** | 直观的操作演示和功能讲解 | https://youtu.be/Rlypv_iswD8 |
-|  **Snippets视频教程** | 直观的操作演示和功能讲解 | https://www.youtube.com/watch?v=xeFeH3Akcu8 |
 
 ###  部署
 	
@@ -101,4 +90,4 @@
   * 本项目反代IP来着前端独苗kejiland  [[qwer-search](https://github.com/qwer-search)) ，感谢作者的贡献。
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=byJoey/cfnew&type=Timeline)](https://www.star-history.com/#byJoey/cfnew&Timeline&LogScale)
+[![Star History Chart](https://api.star-history.com/svg?repos=diyros/cfnew&type=Timeline)](https://www.star-history.com/#diyros/cfnew&Timeline&LogScale)
