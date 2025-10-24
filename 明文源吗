@@ -921,25 +921,25 @@ async function handleSubscriptionRequest(request, user, url = null) {
                     finalLinks.push(...generateLinksFromSource(backupList, user, workerDomain));
                 }
             }
+        }
 
-            try {
-                const newIPList = await fetchAndParseNewIPs();
-                if (newIPList.length > 0) {
-                    finalLinks.push(...generateLinksFromNewIPs(newIPList, user, workerDomain));
-                }
-            } catch (error) {
-                if (!currentWorkerRegion) {
-                    currentWorkerRegion = await detectWorkerRegion(request);
-                }
+        try {
+            const newIPList = await fetchAndParseNewIPs();
+            if (newIPList.length > 0) {
+                finalLinks.push(...generateLinksFromNewIPs(newIPList, user, workerDomain));
+            }
+        } catch (error) {
+            if (!currentWorkerRegion) {
+                currentWorkerRegion = await detectWorkerRegion(request);
+            }
+            
+            const bestBackupIP = await getBestBackupIP(currentWorkerRegion);
+            if (bestBackupIP) {
+                fallbackAddress = bestBackupIP.domain;
+                fallbackPort = bestBackupIP.port.toString();
                 
-                const bestBackupIP = await getBestBackupIP(currentWorkerRegion);
-                if (bestBackupIP) {
-                    fallbackAddress = bestBackupIP.domain;
-                    fallbackPort = bestBackupIP.port.toString();
-                    
-                    const backupList = [{ ip: fallbackAddress, isp: 'ProxyIP-' + currentWorkerRegion }];
-                    finalLinks.push(...generateLinksFromSource(backupList, user, workerDomain));
-                }
+                const backupList = [{ ip: fallbackAddress, isp: 'ProxyIP-' + currentWorkerRegion }];
+                finalLinks.push(...generateLinksFromSource(backupList, user, workerDomain));
             }
         }
     }
@@ -1708,7 +1708,7 @@ async function handleSubscriptionPage(request, user = null) {
             <h2 class="card-title">[ 相关链接 ]</h2>
             <div style="text-align: center; margin: 20px 0;">
                 <a href="https://github.com/diyros/cfnew" target="_blank" style="color: #00ff00; text-decoration: none; margin: 0 20px; font-size: 1.2rem; text-shadow: 0 0 5px #00ff00;">GitHub 项目</a>
-             </div>
+           </div>
         </div>
     </div>
     <script>
