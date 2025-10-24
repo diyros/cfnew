@@ -1707,9 +1707,8 @@ async function handleSubscriptionPage(request, user = null) {
         <div class="card">
             <h2 class="card-title">[ 相关链接 ]</h2>
             <div style="text-align: center; margin: 20px 0;">
-                <a href="https://github.com/byJoey/cfnew" target="_blank" style="color: #00ff00; text-decoration: none; margin: 0 20px; font-size: 1.2rem; text-shadow: 0 0 5px #00ff00;">GitHub 项目</a>
-                <a href="https://www.youtube.com/@joeyblog" target="_blank" style="color: #00ff00; text-decoration: none; margin: 0 20px; font-size: 1.2rem; text-shadow: 0 0 5px #00ff00;">YouTube @joeyblog</a>
-            </div>
+                <a href="https://github.com/diyros/cfnew" target="_blank" style="color: #00ff00; text-decoration: none; margin: 0 20px; font-size: 1.2rem; text-shadow: 0 0 5px #00ff00;">GitHub 项目</a>
+             </div>
         </div>
     </div>
     <script>
