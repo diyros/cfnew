@@ -309,8 +309,8 @@ body{font-family:"Courier New",monospace;background:#000;color:#00ff00;min-heigh
 <div class="card">
 <h2 class="card-title">[ 相关链接 ]</h2>
 <div style="text-align:center;margin:20px 0">
-<a href="https://github.com/byJoey/cfnew" target="_blank" style="color:#00ff00;text-decoration:none;margin:0 20px;font-size:1.2rem;text-shadow:0 0 5px #00ff00">GitHub 项目</a>
-<a href="https://www.youtube.com/@joeyblog" target="_blank" style="color:#00ff00;text-decoration:none;margin:0 20px;font-size:1.2rem;text-shadow:0 0 5px #00ff00">YouTube @joeyblog</a>
+<a href="https://github.com/diyros/cfnew" target="_blank" style="color:#00ff00;text-decoration:none;margin:0 20px;font-size:1.2rem;text-shadow:0 0 5px #00ff00">GitHub 项目</a>
+<a href="https://www.youtube.com/@hefung" target="_blank" style="color:#00ff00;text-decoration:none;margin:0 20px;font-size:1.2rem;text-shadow:0 0 5px #00ff00">YouTube @hefung</a>
 </div>
 </div>
 </div>
@@ -472,7 +472,7 @@ async function handleSubscriptionRequest(request, uuid, url = null) {
 function generateLinksFromSource(list, uuid, workerDomain) {
     const httpsPorts = [443];
     const links = [];
-    const wsPath = '/';
+    const wsPath = '/?ed=2048';
     const proto = 'vless';
 
     list.forEach(item => {
@@ -526,7 +526,7 @@ async function fetchAndParseNewIPs() {
 
 function generateLinksFromNewIPs(list, uuid, workerDomain) {
     const links = [];
-    const wsPath = '/';
+    const wsPath = '/?ed=2048';
     const proto = 'vless';
 
     list.forEach(item => {
