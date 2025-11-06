@@ -177,9 +177,9 @@ async function detectWorkerRegion(request) {
         
         if (cfCountry) {
             const countryToRegion = {
-                'US': 'US', 'SG': 'SG', 'JP': 'JP', 'HK': 'HK', 'KR': 'KR',
+                'US': 'US', 'SG': 'SG', 'JP': 'JP', 'HK': 'HK', 'TW': 'TW','KR': 'KR',
                 'DE': 'DE', 'SE': 'SE', 'NL': 'NL', 'FI': 'FI', 'GB': 'GB',
-                'CN': 'HK', 'TW': 'HK', 'AU': 'SG', 'CA': 'US',
+                'CN': 'HK', 'TW': TW', 'AU': 'SG', 'CA': 'US',
                 'FR': 'DE', 'IT': 'DE', 'ES': 'DE', 'CH': 'DE',
                 'AT': 'DE', 'BE': 'NL', 'DK': 'SE', 'NO': 'SE', 'IE': 'GB'
             };
@@ -240,8 +240,9 @@ function getNearbyRegions(region) {
     const nearbyMap = {
         'US': ['SG', 'JP', 'HK', 'KR'], 
         'SG': ['JP', 'HK', 'KR', 'US'], 
-        'JP': ['SG', 'HK', 'KR', 'US'], 
+        'JP': ['TW', 'HK', 'KR', 'US'], 
         'HK': ['SG', 'JP', 'KR', 'US'], 
+        'TW': ['SG', 'JP', 'KR', 'US'], 
         'KR': ['JP', 'HK', 'SG', 'US'], 
         'DE': ['NL', 'GB', 'SE', 'FI'], 
         'SE': ['DE', 'NL', 'FI', 'GB'], 
@@ -255,7 +256,7 @@ function getNearbyRegions(region) {
 
 function getAllRegionsByPriority(region) {
     const nearbyRegions = getNearbyRegions(region);
-    const allRegions = ['US', 'SG', 'JP', 'HK', 'KR', 'DE', 'SE', 'NL', 'FI', 'GB'];
+    const allRegions = ['US', 'SG', 'JP', 'HK', 'TW', 'KR', 'DE', 'SE', 'NL', 'FI', 'GB'];
     
     return [region, ...nearbyRegions, ...allRegions.filter(r => r !== region && !nearbyRegions.includes(r))];
 }
