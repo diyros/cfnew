@@ -3,6 +3,8 @@ name: Generate and Obfuscate Worker Script
 on:
   workflow_dispatch:
   push:
+    branches:
+      - '**'  # 仅匹配分支推送，排除标签推送
     paths:
       - '明文源吗'
 
@@ -30,7 +32,7 @@ jobs:
           const path = require('path');
           
           const sourceFileName = '明文源吗';
-          const outputFileName = '_worker.js';
+          const outputFileName = '部署用这个';
           const sourceFilePath = path.join(process.cwd(), sourceFileName);
 
           if (!fs.existsSync(sourceFilePath)) {
@@ -90,7 +92,7 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add '_worker.js'
+          git add '部署用这个'
           if git diff --staged --quiet; then
             echo "No changes to commit, the obfuscated file is already up-to-date."
           else
