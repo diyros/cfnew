@@ -1,11 +1,11 @@
-# CFnew - 终端 v2.1
+# CFnew - 终端 v2.5
 
 <div align="center">
 
 **多协议支持 · 自定义路径 · 代码混淆增强**
 
 [![Telegram](https://img.shields.io/badge/Telegram-交流群-blue?logo=telegram)](https://t.me/+ft-zI76oovgwNmRh)
-[![Version](https://img.shields.io/badge/Version-2.1-green)]()
+[![Version](https://img.shields.io/badge/Version-2.5-green)]()
 [![License](https://img.shields.io/badge/License-MIT-orange)]()
 
 </div>
