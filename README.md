@@ -1,4 +1,4 @@
-# CFnew - 终端 v2.6
+# CFnew - 终端 v2.7
 
 <div align="center" style="margin-bottom: 20px;">
 
