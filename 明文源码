@@ -329,17 +329,7 @@
                 
                 const envFallback = getConfigValue('p', env.p || env.P);
                 if (envFallback) {
-                    const fallbackValue = envFallback.toLowerCase();
-                    if (fallbackValue.includes(']:')) {
-                        const lastColonIndex = fallbackValue.lastIndexOf(':');
-                        fallbackPort = fallbackValue.slice(lastColonIndex + 1);
-                        fallbackAddress = fallbackValue.slice(0, lastColonIndex);
-                    } else if (!fallbackValue.includes(']:') && !fallbackValue.includes(']')) {
-                        [fallbackAddress, fallbackPort = '443'] = fallbackValue.split(':');
-                    } else {
-                        fallbackAddress = fallbackValue;
-                        fallbackPort = '443';
-                    }
+                    fallbackAddress = envFallback.trim();
                 }
 
                 socks5Config = getConfigValue('s', env.s || env.S) || socks5Config;
@@ -1237,9 +1227,8 @@
                 
                 const bestBackupIP = await getBestBackupIP(currentWorkerRegion);
                 if (bestBackupIP) {
-                    fallbackAddress = bestBackupIP.domain;
-                    fallbackPort = bestBackupIP.port.toString();
-                    const backupList = [{ ip: fallbackAddress, isp: 'ProxyIP-' + currentWorkerRegion }];
+                    fallbackAddress = bestBackupIP.domain + ':' + bestBackupIP.port;
+                    const backupList = [{ ip: bestBackupIP.domain, isp: 'ProxyIP-' + currentWorkerRegion }];
                     await addNodesFromList(backupList);
                 } else {
                     const nativeList = [{ ip: workerDomain, isp: '原生地址' }];
@@ -1283,10 +1272,9 @@
                     
                     const bestBackupIP = await getBestBackupIP(currentWorkerRegion);
                     if (bestBackupIP) {
-                        fallbackAddress = bestBackupIP.domain;
-                        fallbackPort = bestBackupIP.port.toString();
+                        fallbackAddress = bestBackupIP.domain + ':' + bestBackupIP.port;
                         
-                        const backupList = [{ ip: fallbackAddress, isp: 'ProxyIP-' + currentWorkerRegion }];
+                        const backupList = [{ ip: bestBackupIP.domain, isp: 'ProxyIP-' + currentWorkerRegion }];
                             await addNodesFromList(backupList);
                         }
                     }
@@ -1311,10 +1299,9 @@
                 
                 const bestBackupIP = await getBestBackupIP(currentWorkerRegion);
                 if (bestBackupIP) {
-                    fallbackAddress = bestBackupIP.domain;
-                    fallbackPort = bestBackupIP.port.toString();
+                    fallbackAddress = bestBackupIP.domain + ':' + bestBackupIP.port;
                     
-                    const backupList = [{ ip: fallbackAddress, isp: 'ProxyIP-' + currentWorkerRegion }];
+                    const backupList = [{ ip: bestBackupIP.domain, isp: 'ProxyIP-' + currentWorkerRegion }];
                         await addNodesFromList(backupList);
                     }
                 }
@@ -1689,9 +1676,10 @@
                     return;
                 } catch (socksErr) {
                     let backupHost, backupPort;
-                    if (fallbackAddress && fallbackAddress.trim() && fallbackPort) {
-                        backupHost = fallbackAddress;
-                        backupPort = parseInt(fallbackPort, 10) || portNum;
+                    if (fallbackAddress && fallbackAddress.trim()) {
+                        const parsed = parseAddressAndPort(fallbackAddress);
+                        backupHost = parsed.address;
+                        backupPort = parsed.port || portNum;
                     } else {
                         const bestBackupIP = await getBestBackupIP(currentWorkerRegion);
                         backupHost = bestBackupIP ? bestBackupIP.domain : host;
@@ -1709,9 +1697,10 @@
                 }
             } else {
                 let backupHost, backupPort;
-                if (fallbackAddress && fallbackAddress.trim() && fallbackPort) {
-                    backupHost = fallbackAddress;
-                    backupPort = parseInt(fallbackPort, 10) || portNum;
+                if (fallbackAddress && fallbackAddress.trim()) {
+                    const parsed = parseAddressAndPort(fallbackAddress);
+                    backupHost = parsed.address;
+                    backupPort = parsed.port || portNum;
                 } else {
                     const bestBackupIP = await getBestBackupIP(currentWorkerRegion);
                     backupHost = bestBackupIP ? bestBackupIP.domain : host;
@@ -2679,7 +2668,7 @@
                     <h2 class="card-title">${t.relatedLinks}</h2>
                 <div style="text-align: center; margin: 20px 0;">
                     <a href="https://github.com/diyros/cfnew" target="_blank" style="color: #00ff00; text-decoration: none; margin: 0 20px; font-size: 1.2rem; text-shadow: 0 0 5px #00ff00;">${t.githubProject}</a>
-               </div>
+                </div>
             </div>
         </div>
         <script>
@@ -5331,20 +5320,9 @@
         
         const envFallback = getConfigValue('p', '');
         if (envFallback) {
-            const fallbackValue = envFallback.toLowerCase();
-            if (fallbackValue.includes(']:')) {
-                const lastColonIndex = fallbackValue.lastIndexOf(':');
-                fallbackPort = fallbackValue.slice(lastColonIndex + 1);
-                fallbackAddress = fallbackValue.slice(0, lastColonIndex);
-            } else if (!fallbackValue.includes(']:') && !fallbackValue.includes(']')) {
-                [fallbackAddress, fallbackPort = '443'] = fallbackValue.split(':');
-            } else {
-                fallbackAddress = fallbackValue;
-                fallbackPort = '443';
-            }
+            fallbackAddress = envFallback.trim();
         } else {
             fallbackAddress = '';
-            fallbackPort = '443';
         }
         
         socks5Config = getConfigValue('s', '') || '';
